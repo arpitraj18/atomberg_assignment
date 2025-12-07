@@ -7,3 +7,4 @@ torch
 streamlit
 rapidfuzz
 sentence-transformers
+streamlit

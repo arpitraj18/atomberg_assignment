@@ -1,25 +1,67 @@
 # dashboard/app.py
+
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import streamlit as st
 import pandas as pd
+
 from analytics.sov_metrics import compute_sov, compute_sov_by_keyword
 from analytics.insights import generate_insights
 
 
+# -----------------------------------------------------
+# SAFE DATA LOADING (no crash if file missing)
+# -----------------------------------------------------
 @st.cache_data
 def load_data():
+    if not os.path.exists("data/raw_google_results.csv"):
+        st.warning("No data found yet. Click 'Refresh Google Results' to fetch new data.")
+        return pd.DataFrame()
     return pd.read_csv("data/raw_google_results.csv")
 
 
+# -----------------------------------------------------
+# MAIN DASHBOARD
+# -----------------------------------------------------
 def main():
     st.title("Smart Fan – Google Search Share of Voice Dashboard")
 
-    df = load_data()
+    # ---------- Refresh Button ----------
+    st.sidebar.header("Data Update")
 
-    # Sidebar filters
+    if st.sidebar.button("🔄 Refresh Google Results"):
+        from ingestion.google_search import fetch_google_results
+        from config import KEYWORDS
+        from processing.text_cleaning import clean_text
+        from processing.sentiment import sentiment_score
+        from processing.brand_detection import detect_brand
+
+        st.info("Fetching fresh Google Search results...")
+
+        all_rows = []
+        for kw in KEYWORDS:
+            rows = fetch_google_results(kw)
+            all_rows.extend(rows)
+
+        df_new = pd.DataFrame(all_rows)
+        df_new["text"] = df_new["title"].fillna("") + " " + df_new["snippet"].fillna("")
+        df_new["clean_text"] = df_new["text"].apply(clean_text)
+        df_new["sentiment"] = df_new["clean_text"].apply(sentiment_score)
+        df_new["brand"] = df_new.apply(lambda r: detect_brand(r["clean_text"], r["sentiment"]), axis=1)
+
+        os.makedirs("data", exist_ok=True)
+        df_new.to_csv("data/raw_google_results.csv", index=False)
+
+        st.success("Data refreshed successfully! Reload the page to see updates.")
+
+    # ---------- Load Data ----------
+    df = load_data()
+    if df.empty:
+        return  # stop if dataset missing
+
+    # ---------- Sidebar Filters ----------
     platforms = st.sidebar.multiselect(
         "Platform",
         options=sorted(df["platform"].unique()),
