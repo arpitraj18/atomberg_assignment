@@ -16,10 +16,11 @@ from analytics.insights import generate_insights
 # -----------------------------------------------------
 @st.cache_data
 def load_data():
-    if not os.path.exists("data/raw_google_results.csv"):
-        st.warning("No data found yet. Click 'Refresh Google Results' to fetch new data.")
+    file_path = "data/raw_google_results.csv"
+    if not os.path.exists(file_path):
+        st.error("❌ No data found. Please upload 'data/raw_google_results.csv' in the repository.")
         return pd.DataFrame()
-    return pd.read_csv("data/raw_google_results.csv")
+    return pd.read_csv(file_path)
 
 
 # -----------------------------------------------------
@@ -28,33 +29,6 @@ def load_data():
 def main():
     st.title("Smart Fan – Google Search Share of Voice Dashboard")
 
-    # ---------- Refresh Button ----------
-    st.sidebar.header("Data Update")
-
-    if st.sidebar.button("🔄 Refresh Google Results"):
-        from ingestion.google_search import fetch_google_results
-        from config import KEYWORDS
-        from processing.text_cleaning import clean_text
-        from processing.sentiment import sentiment_score
-        from processing.brand_detection import detect_brand
-
-        st.info("Fetching fresh Google Search results...")
-
-        all_rows = []
-        for kw in KEYWORDS:
-            rows = fetch_google_results(kw)
-            all_rows.extend(rows)
-
-        df_new = pd.DataFrame(all_rows)
-        df_new["text"] = df_new["title"].fillna("") + " " + df_new["snippet"].fillna("")
-        df_new["clean_text"] = df_new["text"].apply(clean_text)
-        df_new["sentiment"] = df_new["clean_text"].apply(sentiment_score)
-        df_new["brand"] = df_new.apply(lambda r: detect_brand(r["clean_text"], r["sentiment"]), axis=1)
-
-        os.makedirs("data", exist_ok=True)
-        df_new.to_csv("data/raw_google_results.csv", index=False)
-
-        st.success("Data refreshed successfully! Reload the page to see updates.")
 
     # ---------- Load Data ----------
     df = load_data()
