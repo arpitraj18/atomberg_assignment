@@ -98,7 +98,7 @@ Leadership-friendly real-time analytics including:
 ## 🧩 System Architecture
 
 ```text
-smart_fan_sov/
+atomberg_assignment/
 │
 ├── config.py
 ├── main.py
