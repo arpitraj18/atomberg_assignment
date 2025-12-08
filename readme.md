@@ -1,105 +1,122 @@
-🔍 Smart Fan Share-of-Voice (SoV) Intelligence System
+# 🔎 Atomberg Smart Fan Share-of-Voice (SoV) Intelligence Platform  
+**AI-Powered Competitive Intelligence for India’s BLDC & Smart Fan Market**
 
-A high-accuracy, Google-powered, multi-keyword share-of-voice engine built using Python, NLP, semantic embeddings, and Streamlit.
+An enterprise-grade **Share-of-Voice Intelligence Platform** designed to monitor, analyze, and optimize **Atomberg’s brand visibility, sentiment, and competitive positioning** across high-intent Google search queries in the Indian smart fan market.
 
-This system tracks Atomberg vs competing brands across multiple high-intent search keywords and computes:
+Built using **Artificial Intelligence, Natural Language Processing (NLP), and Semantic Search**, this system transforms raw Google search results into **actionable marketing and growth intelligence**.
 
-Brand mention share (Volume SoV)
+---
 
-Ranking-weighted visibility (Visibility SoV)
+## 🎯 Executive Overview
 
-Sentiment-weighted positive voice (Positive SoV)
+This platform continuously tracks how **Atomberg and competing brands** (Havells, Crompton, Orient, Bajaj, Usha) perform across critical consumer search journeys such as:
 
-Multi-keyword performance comparison
+- “Smart fan”
+- “BLDC fan”
+- “Energy saving ceiling fan”
 
-Brand-specific keyword strengths & weaknesses
+It delivers:
 
-Automated insights & marketing recommendations
+- ✅ Real-time **brand visibility dominance**
+- ✅ **Sentiment-weighted competitive positioning**
+- ✅ **Keyword-level opportunity detection**
+- ✅ **Automated strategic marketing recommendations**
 
-It uses semantic brand detection (MiniLM embeddings) for ultra-accurate brand recognition across Google search results.
+---
 
-🚀 Features
-🔹 High-Accuracy Google-Only Ingestion
+## 📌 Key Business Outcomes
 
-Uses SerpAPI to fetch:
+For Atomberg’s **Marketing, Growth & Product Strategy teams**, this system enables:
 
-Title
+- Measure **true digital market share**, not just mentions  
+- Identify **high-converting keyword battlegrounds**
+- Detect **sentiment risks & reputation gaps**
+- Discover **brand messaging weaknesses vs competitors**
+- Track **SEO & content performance against rivals**
+- Support **media planning & digital ad targeting decisions**
 
-Snippet
+---
 
-URL
+## 🚀 Platform Capabilities
 
-Google rank
+### 1. High-Fidelity Google Intelligence Engine  
+Powered by **SerpAPI**, the platform ingests:
 
-Multi-keyword support
+- Search result title  
+- Snippet context  
+- Page URL  
+- Exact Google ranking position  
+- Multi-keyword market coverage  
 
-🔹 Advanced Brand Detection
+---
 
-Three-layer detection engine:
+### 2. AI-Driven Brand Recognition Engine  
+A **three-layer hybrid detection framework** ensures enterprise-grade accuracy:
 
-Exact alias matching
+1. Exact brand alias recognition  
+2. Fuzzy brand matching (RapidFuzz)  
+3. Semantic brand similarity (MiniLM embeddings)  
 
-Fuzzy matching (RapidFuzz)
+Detects **implicit, indirect, and noisy brand references** with extremely high precision.
 
-Semantic brand similarity modeling (Sentence-Transformers MiniLM)
+---
 
-🔹 Snippet-Optimized Sentiment Analysis
+### 3. Consumer Sentiment Intelligence  
+Uses **DistilBERT NLP models**, enhanced with domain-specific triggers:
 
-DistilBERT sentiment model
+- Negative sentiment cues: noisy, high power consumption, durability issue  
+- Positive sentiment cues: energy saving, silent operation, smart control  
 
-Negative trigger words (e.g., “noisy”, “issues”, “expensive”)
+Delivers **true consumer perception modeling** instead of generic polarity scoring.
 
-Positive trigger words (e.g., “efficient”, “energy saving”)
+---
 
-Hybrid scoring for highest accuracy
+### 4. Executive-Grade Share-of-Voice Metrics  
 
-🔹 Share of Voice Metrics
+For each **brand**:
+- Volume SoV — pure mention share  
+- Visibility SoV — rank-weighted digital dominance  
+- Positive Voice SoV — sentiment-adjusted brand strength  
 
-For each brand:
+For each **keyword**:
+- Market share distribution  
+- Competitive intensity mapping  
+- Keyword ownership scoring  
 
-Volume SoV
+---
 
-Visibility SoV (log-based rank weight)
+### 5. Automated Strategic Intelligence Engine  
+Generates executive-ready insights including:
 
-Positive Voice SoV
+- Market leaders & challengers  
+- Brand-wise sentiment summaries  
+- High-opportunity keyword clusters  
+- Competitive messaging gaps  
+- Performance-driven growth recommendations  
 
-For each keyword:
-
-Brand-wise SoV breakdown
-
-Keyword dominance analysis
-
-🔹 Automated Insights Engine
-
-Generates:
-
-Brand leaders
-
-Sentiment summaries
-
-Keyword strengths/weaknesses
-
-Strategic recommendations
-
-Stored as:
-
+Exported as:
 data/insights.md
 
-🔹 Interactive Dashboard (Streamlit)
+yaml
+Copy code
 
-Visualizes:
+---
 
-SoV charts
+### 6. Interactive Strategy Dashboard (Streamlit)
 
-Filters (platform, keyword)
+Leadership-friendly real-time analytics including:
 
-Brand distribution
+- Global SoV share visualization  
+- Keyword-level competitive heatmaps  
+- Brand dominance breakdown  
+- Raw Google intelligence explorer  
+- AI-generated insights viewer  
+- Dynamic decision filters  
 
-Insights
+---
 
-Raw results table
+## 🧩 System Architecture
 
-🧩 Project Structure
 smart_fan_sov/
 │
 ├── config.py
@@ -108,96 +125,93 @@ smart_fan_sov/
 ├── .env.example
 │
 ├── data/
-│   ├── raw_google_results.csv
-│   ├── sov_summary_global.csv
-│   ├── sov_summary_by_keyword.csv
-│   └── insights.md
+│ ├── raw_google_results.csv
+│ ├── sov_summary_global.csv
+│ ├── sov_summary_by_keyword.csv
+│ └── insights.md
 │
 ├── ingestion/
-│   └── google_search.py
+│ └── google_search.py
 │
 ├── processing/
-│   ├── text_cleaning.py
-│   ├── brand_detection.py
-│   └── sentiment.py
+│ ├── text_cleaning.py
+│ ├── brand_detection.py
+│ └── sentiment.py
 │
 ├── analytics/
-│   ├── sov_metrics.py
-│   └── insights.py
+│ ├── sov_metrics.py
+│ └── insights.py
 │
 └── dashboard/
-    └── app.py
+└── app.py
 
-⚙️ Installation
-1️⃣ Clone the repository
+yaml
+Copy code
+
+---
+
+## ⚙️ Deployment & Execution
+
+### 1️⃣ Secure Setup
+```bash
 git clone https://github.com/YOUR_USERNAME/smart_fan_sov.git
 cd smart_fan_sov
-
-2️⃣ Install dependencies
 pip install -r requirements.txt
-
-3️⃣ Create .env file
+2️⃣ Secure API Configuration
+env
+Copy code
 SERPAPI_KEY=your_serpapi_key_here
 TOP_N=20
 KEYWORDS=smart fan,bldc fan,energy saving fan
+▶️ Run Intelligence Pipeline
+bash
+Copy code
+python main.py
+Generates:
 
+Market-wide raw intelligence dataset
 
-(Do not commit this file.)
+Global & keyword-level SoV reports
 
-▶️ Run the Pipeline
+Automated strategy recommendations document
 
-This fetches Google results, computes SoV, sentiment, insights, and exports CSVs.
-
-
-Outputs:
-
-data/raw_google_results.csv
-data/sov_summary_global.csv
-data/sov_summary_by_keyword.csv
-data/insights.md
-
-📊 Run the Dashboard
+📊 Launch Strategy Dashboard
+bash
+Copy code
 streamlit run dashboard/app.py
-
-
-Features:
-
-Filters by keyword and platform
-
-Global SoV charts
-
-Keyword-level SoV analysis
-
-Raw results explorer
-
-Insights viewer
-
-🧠 Technologies Used
-
+🧠 Technology Stack
 Python
 
-SerpAPI (Google Search API)
+SerpAPI (Google Intelligence)
 
-Sentence-Transformers (MiniLM embeddings)
+Sentence-Transformers (MiniLM Semantic AI)
 
-Transformers (DistilBERT) – sentiment analysis
+Transformers (DistilBERT Sentiment NLP)
 
-RapidFuzz – fuzzy brand matching
+RapidFuzz (High-performance fuzzy matching)
 
-NumPy / Pandas – data processing
+NumPy / Pandas (Enterprise data processing)
 
-Streamlit – dashboard
+Streamlit (Executive dashboard)
 
-🚧 Roadmap
+🛣️ Atomberg Expansion Roadmap (Phase-2)
+Multi-platform SoV: YouTube, Amazon, Flipkart, Instagram
 
-Planned future upgrades:
+Product-level SoV (Renesa, Gorilla, Studio series)
 
-Add competitor product-line clustering
+City-wise geo-SoV tracking
 
-Train domain-specific sentiment model
+Historical trend modeling
 
-Add scheduled weekly SOV monitoring
+Campaign impact measurement
 
-Add PDF/Email insights export
+Automated CMO insights email reporting
 
-Multi-platform extensions (YouTube, Reddit, Instagram via Apify)
+Predictive market-share forecasting
+
+📈 Strategic Value for Atomberg
+This platform enables data-backed competitive decision-making by converting:
+
+Unstructured Google search noise → Actionable brand dominance intelligence.
+
+It empowers Atomberg to proactively control digital mindshare, optimize marketing ROI, and strengthen leadership in the BLDC smart fan category.
