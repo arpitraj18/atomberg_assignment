@@ -125,60 +125,67 @@ smart_fan_sov/
 │
 └── dashboard/
     └── app.py
-⚙️ Deployment & Execution
-1️⃣ Secure Setup
-Bash
+```
 
+---
+
+## ⚙️ Deployment & Execution
+
+### 1️⃣ Secure Setup
+```bash
 git clone [https://github.com/YOUR_USERNAME/smart_fan_sov.git](https://github.com/YOUR_USERNAME/smart_fan_sov.git)
 cd smart_fan_sov
 pip install -r requirements.txt
-2️⃣ Secure API Configuration
-Code snippet
+```
 
+### 2️⃣ Secure API Configuration
+Create a `.env` file:
+```env
 SERPAPI_KEY=your_serpapi_key_here
 TOP_N=20
 KEYWORDS=smart fan,bldc fan,energy saving fan
-▶️ Run Intelligence Pipeline
-Bash
+```
 
+### ▶️ Run Intelligence Pipeline
+```bash
 python main.py
-📊 Launch Strategy Dashboard
-Bash
+```
 
+### 📊 Launch Strategy Dashboard
+```bash
 streamlit run dashboard/app.py
-🧠 Technology Stack
-Python
+```
 
-SerpAPI (Google Intelligence)
+---
 
-Sentence-Transformers (MiniLM Semantic AI)
+## 🧠 Technology Stack
 
-Transformers (DistilBERT Sentiment NLP)
+* **Python**
+* **SerpAPI** (Google Intelligence)
+* **Sentence-Transformers** (MiniLM Semantic AI)
+* **Transformers** (DistilBERT Sentiment NLP)
+* **RapidFuzz** (High-performance fuzzy matching)
+* **NumPy / Pandas** (Enterprise data processing)
+* **Streamlit** (Executive dashboard)
 
-RapidFuzz (High-performance fuzzy matching)
+---
 
-NumPy / Pandas (Enterprise data processing)
+## 🛣️ Atomberg Expansion Roadmap (Phase-2)
 
-Streamlit (Executive dashboard)
+* Multi-platform SoV: YouTube, Amazon, Flipkart, Instagram
+* Product-level SoV (Renesa, Gorilla, Studio series)
+* City-wise geo-SoV tracking
+* Historical trend modeling
+* Campaign impact measurement
+* Automated CMO insights email reporting
+* Predictive market-share forecasting
 
-🛣️ Atomberg Expansion Roadmap (Phase-2)
-Multi-platform SoV: YouTube, Amazon, Flipkart, Instagram
+---
 
-Product-level SoV (Renesa, Gorilla, Studio series)
+## 📈 Strategic Value for Atomberg
 
-City-wise geo-SoV tracking
-
-Historical trend modeling
-
-Campaign impact measurement
-
-Automated CMO insights email reporting
-
-Predictive market-share forecasting
-
-📈 Strategic Value for Atomberg
 This platform enables data-backed competitive decision-making by converting:
 
-Unstructured Google search noise → Actionable brand dominance intelligence.
+> **Unstructured Google search noise → Actionable brand dominance intelligence.**
 
 It empowers Atomberg to proactively control digital mindshare, optimize marketing ROI, and strengthen leadership in the BLDC smart fan category.
